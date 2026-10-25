@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabel-Karteikarten Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Vokabel-Trainer</h1>
+        <p>Lerne deine Units mit Selbstüberprüfung (Format: Deutsch, Englisch, ...)</p>
+
+        <!-- Unit-Auswahl & Eingabe -->
+        <div class="input-section">
+            <div style="display: flex; gap: 8px; width: 100%;">
+                <select id="unitSelect" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <option value="">-- Unit auswählen oder neue erstellen --</option>
+                </select>
+                <input type="text" id="newUnitInput" placeholder="Neue Unit (z.B. Unit 1)" style="flex: 1;">
+            </div>
+
+            <textarea id="vocabInput" placeholder="Haus, house, Hund, dog, Katze, cat..."></textarea>
+            <button id="saveVocabBtn">Unit speichern & Vokabeln laden</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <!-- Karteikarten-Ansicht -->
+        <div id="flashcardContainer" class="flashcard-container hidden">
+            <div class="card" id="flashcard">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <span id="frontText">Vorderseite</span>
+                    </div>
+                    <div class="card-back">
+                        <span id="backText">Rückseite</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="counter-display">
+                <span id="counter">0 / 0</span>
+            </div>
+
+            <!-- Richtig / Falsch Buttons während des Lernens -->
+            <div class="eval-controls" id="evalControls">
+                <button id="wrongBtn" class="eval-btn wrong-btn">❌ Falsch</button>
+                <button id="rightBtn" class="eval-btn right-btn">✔️ Richtig</button>
+            </div>
+        </div>
+
+        <!-- Ergebnis-Ansicht am Ende -->
+        <div id="resultContainer" class="result-container hidden">
+            <h2>Lern-Ergebnis</h2>
+            <p id="resultText"></p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <button id="retryWrongBtn" class="hidden" style="background-color: #f59e0b;">Falsche wiederholen</button>
+                <button id="restartBtn">Nochmal von vorne</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
